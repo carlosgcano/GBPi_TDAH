@@ -15,7 +15,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).clicked.connect(self.actualizar)    
         self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(self.close)    
         #self.mplwindow.clicked.connect(self.actualizar)
-
+        self.pushButton.clicked.connect(self.changePage)
+        #QtGui.QShortcut(QtCore.Qt.Key_Up, self, self.changePage)
 
         sizes1 = [20,20,20,20,20]
         fig1, ax1 = plt.subplots()
@@ -38,7 +39,20 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QMessageBox.information(self, "Tipo de clic",
                                 "Hiciste click.")
 
+    def changePage(self):
+        print("entra3")
+        if self.stackedWidget.currentIndex()==0:
+            self.stackedWidget.setCurrentIndex(1)
+        else:
+            self.stackedWidget.setCurrentIndex(0)
 
+
+    def keyPressEvent(self, event):
+        if event.key() == QtCore.Qt.Key_Q:
+            print("entra")
+            self.changePage
+            self.changePage()
+            print("entra2")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])

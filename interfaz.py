@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'interfaz.ui'
 #
-# Created: Mon Apr 13 20:01:52 2020
+# Created: Wed Apr 15 20:50:53 2020
 #      by: PyQt5 UI code generator 5.3.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -71,8 +71,12 @@ class Ui_MainWindow(object):
         self.mplwindow_3.setMouseTracking(False)
         self.mplwindow_3.setObjectName("mplwindow_3")
         self.mplvl_3 = QtWidgets.QVBoxLayout(self.mplwindow_3)
+        self.mplvl_3.setSpacing(7)
         self.mplvl_3.setContentsMargins(0, 0, 0, 0)
         self.mplvl_3.setObjectName("mplvl_3")
+        self.pushButton = QtWidgets.QPushButton(self.page_2)
+        self.pushButton.setGeometry(QtCore.QRect(30, 270, 110, 29))
+        self.pushButton.setObjectName("pushButton")
         self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -83,6 +87,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton.setText(_translate("MainWindow", "PushButton"))
 
     def add_medal(self, name, x_translation):
         self.name = QtWidgets.QLabel(self.premios)
