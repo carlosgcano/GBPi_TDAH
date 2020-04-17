@@ -11,11 +11,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self) 
-        self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).setText("Cerrar")
-        self.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).clicked.connect(self.actualizar)    
-        self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(self.close)    
+        #self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).setText("Cerrar")
+        #self.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).clicked.connect(self.actualizar)    
+        #self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(self.close)    
         #self.mplwindow.clicked.connect(self.actualizar)
-        self.pushButton.clicked.connect(self.changePage)
+        #self.pushButton.clicked.connect(self.changePage)
         #QtGui.QShortcut(QtCore.Qt.Key_Up, self, self.changePage)
 
         sizes1 = [20,20,20,20,20]
@@ -24,7 +24,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         ax1.axis('equal') 
         self.canvas = FigureCanvas(fig1)
         self.mplvl.addWidget(self.canvas)
-        self.mplvl_3.addWidget(self.canvas)
         self.canvas.draw()
 
         sizes2 = [25,25,25,25]
@@ -33,6 +32,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         ax2.axis('equal') 
         self.canvas = FigureCanvas(fig2)
         self.mplvl_2.addWidget(self.canvas)
+        self.canvas.draw()
+
+        sizes3 = [20,20,20,20,20]
+        fig3, ax3 = plt.subplots()
+        ax3.pie(sizes1)
+        ax3.axis('equal') 
+        self.canvas = FigureCanvas(fig3)
+        self.mplvl_3.addWidget(self.canvas)
         self.canvas.draw()
 
     def actualizar(self):
@@ -46,13 +53,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.stackedWidget.setCurrentIndex(0)
 
-
     def keyPressEvent(self, event):
-        if event.key() == QtCore.Qt.Key_Q:
+        if event.key() == QtCore.Qt.Key_Right and self.stackedWidget.currentIndex()==0:
             print("entra")
-            self.changePage
-            self.changePage()
+            self.stackedWidget.setCurrentIndex(1)
+        elif event.key() == QtCore.Qt.Key_Left and self.stackedWidget.currentIndex()==1:
             print("entra2")
+            self.stackedWidget.setCurrentIndex(0)
+        elif event.key() == QtCore.Qt.Key_Down and self.stackedWidget.currentIndex()==0:
+            print("entra3")
+            self.stackedWidget.setCurrentIndex(2)
+        elif event.key() == QtCore.Qt.Key_Up and self.stackedWidget.currentIndex()==2:
+            print("entra4")
+            self.stackedWidget.setCurrentIndex(0)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
