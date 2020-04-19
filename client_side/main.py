@@ -22,14 +22,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         fig1, ax1 = plt.subplots()
         ax1.pie(sizes1)
         ax1.axis('equal') 
+        ax1.set_xlabel('Subjets')
         self.canvas = FigureCanvas(fig1)
         self.mplvl.addWidget(self.canvas)
+
         self.canvas.draw()
 
         sizes2 = [25,25,25,25]
         fig2, ax2 = plt.subplots()
         ax2.pie(sizes2)
         ax2.axis('equal') 
+        ax2.set_xlabel('Actitudes')
         self.canvas = FigureCanvas(fig2)
         self.mplvl_2.addWidget(self.canvas)
         self.canvas.draw()
@@ -41,19 +44,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.canvas = FigureCanvas(fig3)
         self.mplvl_3.addWidget(self.canvas)
         self.canvas.draw()
+        ax3.set_xlabel('easy come, easy go')
 
-    def actualizar(self):
-        QMessageBox.information(self, "Tipo de clic",
-                                "Hiciste click.")
-
-    def changePage(self):
-        print("entra3")
-        if self.stackedWidget.currentIndex()==0:
-            self.stackedWidget.setCurrentIndex(1)
-        else:
-            self.stackedWidget.setCurrentIndex(0)
 
     def keyPressEvent(self, event):
+        window = MainWindow()
         if event.key() == QtCore.Qt.Key_Right and self.stackedWidget.currentIndex()==0:
             print("entra")
             self.stackedWidget.setCurrentIndex(1)
@@ -66,6 +61,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         elif event.key() == QtCore.Qt.Key_Up and self.stackedWidget.currentIndex()==2:
             print("entra4")
             self.stackedWidget.setCurrentIndex(0)
+        if event.key() == QtCore.Qt.Key_P:            
+            
+            window.self.ax3.set_visible(not visible)
+            window.fig3.canvas.draw()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
@@ -83,7 +82,7 @@ if __name__ == "__main__":
         x_pos+=52
         print(x_pos)
         name="medal_"+str(j)
-        window.add_medal(name, x_pos)
+        window.add_medal(name, x_pos) 
 
     window.show()
     app.exec_()
