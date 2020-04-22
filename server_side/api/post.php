@@ -3,9 +3,9 @@
 
 include_once 'db_config.php';
 
-class Pelicula extends DB{
+class Student extends DB{
     
-    function obtenerPeliculas(){
+    function getStudents(){
         $query = $this->connect()->query('SELECT * FROM gbpi_web');
         return $query;
     }

@@ -6,27 +6,29 @@ class Api{
 
 
     function getAll(){
-        $pelicula = new Pelicula();
-        $peliculas = array();
-        $peliculas["items"] = array();
+        $student = new Student();
+        $students = array();
+        $students["items"] = array();
 
-        $res = $pelicula->obtenerPeliculas();
+        $res = $student->getStudents();
 
         if($res->rowCount()){
             while ($row = $res->fetch(PDO::FETCH_ASSOC)){
     
                 $item=array(
-                    "id" => $row['id'],
-                    "nombre" => $row['name'],
-                    //"email" => $row['email'],
-                    //"message" => $row['message'],
+                    "n_subj" => $row['n_subj'],
+                    "n_act" => $row['n_act'],
+                    "n_medal" => $row['n_medal'],
+                    "n_trophy" => $row['n_trophy'],
+                    "total_points" => $row['total_points'],
+                    "student_name" => $row['student_name']
                 );
-                array_push($peliculas["items"], $item);
+                array_push($students["items"], $item);
             }
         
-            echo json_encode($peliculas);
+            echo json_encode($students);
         }else{
-            echo json_encode(array('mensaje' => 'No hay elementos'));
+            echo json_encode(array('message' => 'No elements'));
         }
     }
 }
