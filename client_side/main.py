@@ -18,34 +18,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #self.pushButton.clicked.connect(self.changePage)
         #QtGui.QShortcut(QtCore.Qt.Key_Up, self, self.changePage)
 
-        sizes1 = [20,20,20,20,20]
-        fig1, ax1 = plt.subplots()
-        ax1.pie(sizes1)
-        ax1.axis('equal') 
-        ax1.set_xlabel('Subjets')
-        self.canvas = FigureCanvas(fig1)
-        self.mplvl.addWidget(self.canvas)
-
-        self.canvas.draw()
-
-        sizes2 = [25,25,25,25]
-        fig2, ax2 = plt.subplots()
-        ax2.pie(sizes2)
-        ax2.axis('equal') 
-        ax2.set_xlabel('Actitudes')
-        self.canvas = FigureCanvas(fig2)
-        self.mplvl_2.addWidget(self.canvas)
-        self.canvas.draw()
-
-        sizes3 = [20,20,20,20,20]
-        fig3, ax3 = plt.subplots()
-        ax3.pie(sizes1)
-        ax3.axis('equal') 
-        self.canvas = FigureCanvas(fig3)
-        self.mplvl_3.addWidget(self.canvas)
-        self.canvas.draw()
-        ax3.set_xlabel('easy come, easy go')
-
 
     def keyPressEvent(self, event):
         window = MainWindow()
@@ -61,16 +33,42 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         elif event.key() == QtCore.Qt.Key_Up and self.stackedWidget.currentIndex()==2:
             print("entra4")
             self.stackedWidget.setCurrentIndex(0)
-        if event.key() == QtCore.Qt.Key_P:            
-            
-            window.self.ax3.set_visible(not visible)
-            window.fig3.canvas.draw()
-
+        
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
     window = MainWindow()
-    
-    trophies_points,medals_points = Utils.get_trophies_and_medals_from_points()
+
+    total_data=Utils.get_all()
+
+    sizes1 = Utils.generate_subjects_for_pie(total_data)
+    fig1, ax1 = plt.subplots()
+    #colors = ['yellowgreen', 'gold', 'lightskyblue', 'lightcoral']
+    cs = ['green','green', 'green', 'green','red', 'yellow', 'yellow']
+    ax1.pie(sizes1, colors=cs)
+    ax1.axis('equal') 
+    ax1.set_xlabel('Subjets')
+    window.canvas = FigureCanvas(fig1)
+    window.mplvl.addWidget(window.canvas)
+
+    sizes2 = Utils.generate_actitudes_for_pie(total_data)
+    fig2, ax2 = plt.subplots()
+    ax2.pie(sizes2, colors=cs)
+    ax2.axis('equal') 
+    ax2.set_xlabel('Actitudes')
+    window.canvas = FigureCanvas(fig2)
+    window.mplvl_2.addWidget(window.canvas)
+
+    fig3, ax3 = plt.subplots()
+    ax3.pie(sizes1, colors=cs)
+    ax3.axis('equal') 
+    window.canvas = FigureCanvas(fig3)
+    window.mplvl_3.addWidget(window.canvas)
+    ax3.set_xlabel('easy come, easy go')
+
+    window.canvas.draw()
+
+
+    trophies_points,medals_points = Utils.get_trophies_and_medals_from_points(total_data)
     x_pos=-52
     for i in range(trophies_points):        
         x_pos+=52

@@ -23,9 +23,9 @@ class Utils(object):
 	def get_trophy_value_from_server(data):
 	    return data['items'][0]['n_trophy']
 
-	def get_trophies_and_medals_from_points():
+	def get_trophies_and_medals_from_points(total_data):
 		total_points, trophies_value, trophies_points, medals_value, medals_points = 0,0,0,0,0
-		total_data=Utils.get_all()
+
 		trophies_value = int(Utils.get_trophy_value_from_server(total_data))
 		medals_value = int(Utils.get_medal_value_from_server(total_data))
 		
@@ -39,3 +39,20 @@ class Utils(object):
 		print("medals points:"+str(medals_points))
 		return trophies_points, medals_points
 
+	def generate_subjects_for_pie(total_data):
+		subjects = int(Utils.get_subjects(total_data))
+		subject= 100/subjects
+		res=[subject] * subjects
+		return res
+
+	def generate_actitudes_for_pie(total_data):
+		actitudes = int(Utils.get_actitudes(total_data))
+		actitude= 100/actitudes
+		res=[actitudes] * actitudes
+		return res
+
+	def get_subjects_colors(data):
+	    #return data['items'][0]['n_trophy']
+
+	def get_actitudes_colors(data):
+	    #return data['items'][0]['n_trophy']
