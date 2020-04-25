@@ -51,8 +51,8 @@ class Utils(object):
 		res=[actitudes] * actitudes
 		return res
 
-	def get_subjects_colors(data):
-	    #return data['items'][0]['n_trophy']
+	#def get_subjects_colors(data):
+		#return data['items'][0]['n_trophy']
 
-	def get_actitudes_colors(data):
-	    #return data['items'][0]['n_trophy']
+	#def get_actitudes_colors(data):
+		#return data['items'][0]['n_trophy']
