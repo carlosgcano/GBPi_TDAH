@@ -21,7 +21,8 @@ class Api{
                     "n_medal" => $row['n_medal'],
                     "n_trophy" => $row['n_trophy'],
                     "total_points" => $row['total_points'],
-                    "student_name" => $row['student_name']
+                    "student_name" => $row['student_name'],
+                    "subject_status" => $row['subject_status']
                 );
                 array_push($students["items"], $item);
             }

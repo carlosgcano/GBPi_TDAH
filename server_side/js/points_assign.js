@@ -3,8 +3,8 @@ $("#chart").kendoChart({
     data: subject_pie
   },
   title: {
-    align: "left",
-    text: "Comments per day"
+    align: "center",
+    text: "Subjects"
   },
   legend: {
     visible: false
@@ -12,34 +12,19 @@ $("#chart").kendoChart({
   seriesDefaults: {
     type: "pie",
     labels: {
-      visible: true,
+      visible: false,
       background: "transparent"
     }
   },
   series: [{
-    color: "red",
     field: "value",
     colorField: "userColor"
   }],
-  valueAxis: {
-    max: 28,
-    majorGridLines: {
-      visible: false
-    },
-    visible: false
-  },
-  categoryAxis: {
-    field: "day",
-    majorGridLines: {
-      visible: false
-    },
-    line: {
-      visible: false
-    }
-  },
   seriesClick: onSeriesClick,
   transitions: false
 });
+
+
 
 function onSeriesClick(e){
 
@@ -48,7 +33,8 @@ function onSeriesClick(e){
   switch(e.dataItem.userColor) {
   case "grey":
     e.dataItem.userColor = "green";
-    chart.refresh();  
+    chart.refresh(); 
+
     break;
   case "green":
     e.dataItem.userColor = "yellow";
@@ -66,11 +52,16 @@ function onSeriesClick(e){
     e.dataItem.userColor = "grey";
     chart.refresh();  
     break;
-  } 
+  }         
 }
 
+function get_slice_colors() {
+    var res = [];
+    var chart_slices_values = Object.entries($("#chart").data("kendoChart"))[18][1][0];
+    for (var i=0; i < chart_slices_values.data.length ; ++i){
+      res.push(Object.values(chart_slices_values.data)[i].userColor);       
+    }
+    return res; 
+}
 
-  //var chart = $("#chart").kendoChart("title");
-
-  //console.log(chart);
 

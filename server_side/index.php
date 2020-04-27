@@ -16,23 +16,43 @@
     readfile("sidebar.php");
     ?>
 
-
     <script language='javascript'>
     <?php
     $json = file_get_contents('http://localhost/api/');      
     $data = json_decode($json); 
 
-    $subjects=$data->items[0]->n_subj;
-    $percent=100/$subjects;
+    $colors = explode(",", $data->items[0]->subject_status);
+    //var_dump($colors);
+    $subjects = $data->items[0]->n_subj;
+    $percent = 100/$subjects;
     echo "var subject_pie = [ ";
     for  ($i = 1; $i <= $subjects; $i++) {  
         echo "{\"category\": ".$i.",
                 \"value\": ".$percent.",
-                \"userColor\": \"grey\"
+                \"userColor\": \"".$colors[$i-1]."\"
             },";
     }
     echo "];";
     ?>
+    </script>
+    <script>
+        function post_slice_colors(){
+                var parametros = get_slice_colors();
+                
+                var myJSONText = JSON.stringify( parametros );
+                console.log(myJSONText);
+                $.ajax({
+                        type: "POST", 
+                        url: "form/form_submit.php", 
+                        data: { slice_colors : parametros}, 
+                        beforeSend: function () {
+                                $("#resultado").html("Procesando, espere por favor...");
+                        },
+                        success:  function (response) {
+                                $("#resultado").html(response);
+                        }
+                });
+        }
     </script>
 
 
@@ -52,16 +72,24 @@
                 To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="/js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
             </p>
 
-  		<div id="chart"></div>
-
-            <button type="submit" form="subject_puntuation_form" value="Submit">Submit</button>
+                <div id="chart"></div>
+                <button onclick="post_slice_colors()">Enviar</button>
+            Resultado: <span id="resultado">0</span>
         </div>
 
     </div>
 
 </div>
+
     <script src="js/points_assign.js"></script>
     <script src="js/ui.js"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+

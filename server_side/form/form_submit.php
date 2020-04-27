@@ -45,18 +45,36 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy)
     }
 }
 
-if (isset($_POST['submit'])) {
+
+function saveSubjectStatus($data)
+{
     
-    $n_subj   = htmlentities($_POST['n_subj']);
-    $n_act    = htmlentities($_POST['n_act']);
-    $n_medal  = htmlentities($_POST['n_medal']);
-    $n_trophy = htmlentities($_POST['n_trophy']);
+    global $connection;
+    $subject_status = implode(",", $data);
+    echo "entra7";
+    $query = "UPDATE `gbpi`.`gbpi_web` SET `subject_status` = '$subject_status' WHERE `gbpi_web`.`student_name` = 'student1'";
     
-    $result = saveData($n_subj, $n_act, $n_medal, $n_trophy);
-    
-    echo $result;
-} else {
-    echo '<h3 style="text-align:center;">A very detailed error message</h3>';
+    $callToDb = $connection->prepare($query);
+    $subject_status   = htmlspecialchars(strip_tags($subject_status));
+    $result = $callToDb->execute();
+    echo "resultado:";
+    var_dump($result);
 }
+
+if (isset($_POST['submit'])) {
+    echo "entra3";
+        $n_subj   = htmlentities($_POST['n_subj']);
+        $n_act    = htmlentities($_POST['n_act']);
+        $n_medal  = htmlentities($_POST['n_medal']);
+        $n_trophy = htmlentities($_POST['n_trophy']);
+        $result = saveData($n_subj, $n_act, $n_medal, $n_trophy);
+        echo $result;
+    } elseif (isset($_POST['slice_colors'])) {    
+        $subject_status = $_POST['slice_colors'];       
+        $result = saveSubjectStatus($subject_status);      
+    }else{ 
+        echo '<h3 style="text-align:center;">Error</h3>';
+}
+
 
 ?> 
