@@ -1,4 +1,4 @@
-$("#chart").kendoChart({
+$("#chart_subjects_index").kendoChart({
   dataSource: {
     data: subject_pie
   },
@@ -28,7 +28,7 @@ $("#chart").kendoChart({
 
 function onSeriesClick(e){
 
-  var chart = $("#chart").data("kendoChart");
+  var chart = $("#chart_subjects_index").data("kendoChart");
 
   switch(e.dataItem.userColor) {
   case "grey":
@@ -57,7 +57,7 @@ function onSeriesClick(e){
 
 function get_slice_colors() {
     var res = [];
-    var chart_slices_values = Object.entries($("#chart").data("kendoChart"))[18][1][0];
+    var chart_slices_values = Object.entries($("#chart_subjects_index").data("kendoChart"))[18][1][0];
     for (var i=0; i < chart_slices_values.data.length ; ++i){
       res.push(Object.values(chart_slices_values.data)[i].userColor);       
     }
@@ -65,3 +65,52 @@ function get_slice_colors() {
 }
 
 
+$("#chart_subjects_stats").kendoChart({
+  dataSource: {
+    data: subject_pie
+  },
+  title: {
+    align: "center",
+    text: "Subjects"
+  },
+  legend: {
+    visible: false
+  },
+  seriesDefaults: {
+    type: "pie",
+    labels: {
+      visible: false,
+      background: "transparent"
+    }
+  },
+  series: [{
+    field: "value",
+    colorField: "userColor"
+  }],
+  transitions: false
+});
+
+$("#chart_attitudes_stats").kendoChart({
+  dataSource: {
+    data: attitudes_pie
+  },
+  title: {
+    align: "center",
+    text: "Attitudes"
+  },
+  legend: {
+    visible: false
+  },
+  seriesDefaults: {
+    type: "pie",
+    labels: {
+      visible: false,
+      background: "transparent"
+    }
+  },
+  series: [{
+    field: "value",
+    colorField: "userColor"
+  }],
+  transitions: false
+});

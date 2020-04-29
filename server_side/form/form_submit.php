@@ -14,12 +14,12 @@ catch(PDOException $exception)
     echo "Connection error: " . $exception->getMessage();
 }
 
-function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status)
+function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status)
 {
     global $connection;
 
     $query = "  UPDATE `gbpi`.`gbpi_web` 
-                SET `n_subj`='$n_subj',`n_act`='$n_act',`n_medal`='$n_medal',`n_trophy`='$n_trophy',`subject_status`='$subject_status' 
+                SET `n_subj`='$n_subj',`n_act`='$n_act',`n_medal`='$n_medal',`n_trophy`='$n_trophy',`subject_status`='$subject_status',`attitude_status`='$attitude_status' 
                 WHERE `gbpi_web`.`student_name`='student1'";
 
     $callToDb = $connection->prepare($query);
@@ -65,7 +65,8 @@ if (isset($_POST['submit']))
     $n_medal    = $_POST['n_medal'];
     $n_trophy   = $_POST['n_trophy'];
     $subject_status = rtrim(str_repeat("grey,", $n_subj) , ",");
-    $result = saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status);
+    $attitude_status = rtrim(str_repeat("grey,", $n_act) , ",");
+    $result = saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status);
     echo $result;
 }
 elseif (isset($_POST['slice_colors']))

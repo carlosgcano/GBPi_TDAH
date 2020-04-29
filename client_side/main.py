@@ -40,26 +40,24 @@ if __name__ == "__main__":
 
     total_data=Utils.get_all()
 
-    sizes1 = Utils.generate_subjects_for_pie(total_data)
     fig1, ax1 = plt.subplots()
-    #colors = ['yellowgreen', 'gold', 'lightskyblue', 'lightcoral']
-    cs = ['green','green', 'green', 'green','red', 'yellow', 'yellow']
-    ax1.pie(sizes1, colors=cs)
+    sizes1, colors1 = Utils.generate_subjects_for_pie(total_data)
+    ax1.pie(sizes1, colors=colors1)
     ax1.axis('equal') 
     ax1.set_xlabel('Subjets')
     window.canvas = FigureCanvas(fig1)
-    window.mplvl.addWidget(window.canvas)
+    window.mplvl.addWidget(window.canvas)  
 
-    sizes2 = Utils.generate_actitudes_for_pie(total_data)
+    sizes2, colors2 = Utils.generate_actitudes_for_pie(total_data)
     fig2, ax2 = plt.subplots()
-    ax2.pie(sizes2, colors=cs)
+    ax2.pie(sizes2, colors=colors2)
     ax2.axis('equal') 
     ax2.set_xlabel('Actitudes')
     window.canvas = FigureCanvas(fig2)
     window.mplvl_2.addWidget(window.canvas)
 
     fig3, ax3 = plt.subplots()
-    ax3.pie(sizes1, colors=cs)
+    ax3.pie(sizes1, colors=colors1)
     ax3.axis('equal') 
     window.canvas = FigureCanvas(fig3)
     window.mplvl_3.addWidget(window.canvas)

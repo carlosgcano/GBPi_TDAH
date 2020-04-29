@@ -21,7 +21,15 @@ class Utils(object):
 	    return data['items'][0]['n_medal']
 
 	def get_trophy_value_from_server(data):
-	    return data['items'][0]['n_trophy']
+		return data['items'][0]['n_trophy']
+
+	def get_subjects_colors(data):
+		res = data['items'][0]['subject_status']
+		return res.split(",")
+
+	def get_actitudes_colors(data):
+		res = data['items'][0]['attitude_status']
+		return res.split(",")
 
 	def get_trophies_and_medals_from_points(total_data):
 		total_points, trophies_value, trophies_points, medals_value, medals_points = 0,0,0,0,0
@@ -40,19 +48,16 @@ class Utils(object):
 		return trophies_points, medals_points
 
 	def generate_subjects_for_pie(total_data):
+		colors = Utils.get_subjects_colors(total_data)
 		subjects = int(Utils.get_subjects(total_data))
-		subject= 100/subjects
-		res=[subject] * subjects
-		return res
+		subject = 100/subjects
+		res = [subject] * subjects
+		return res, colors
 
 	def generate_actitudes_for_pie(total_data):
+		colors = Utils.get_actitudes_colors(total_data)
 		actitudes = int(Utils.get_actitudes(total_data))
 		actitude= 100/actitudes
 		res=[actitudes] * actitudes
-		return res
+		return res, colors
 
-	#def get_subjects_colors(data):
-		#return data['items'][0]['n_trophy']
-
-	#def get_actitudes_colors(data):
-		#return data['items'][0]['n_trophy']

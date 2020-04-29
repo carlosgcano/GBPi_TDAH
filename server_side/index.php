@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     <link rel="stylesheet" href="css/layouts/side-menu.css">
 
-  <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
 </head>
 <body>
@@ -18,21 +18,20 @@
 
     <script language='javascript'>
     <?php
-    $json = file_get_contents('http://localhost/api/');      
-    $data = json_decode($json); 
+        $json = file_get_contents('http://localhost/api/');      
+        $data = json_decode($json); 
 
-    $colors = explode(",", $data->items[0]->subject_status);
-    //var_dump($colors);
-    $subjects = $data->items[0]->n_subj;
-    $percent = 100/$subjects;
-    echo "var subject_pie = [ ";
-    for  ($i = 1; $i <= $subjects; $i++) {  
-        echo "{\"category\": ".$i.",
-                \"value\": ".$percent.",
-                \"userColor\": \"".$colors[$i-1]."\"
-            },";
-    }
-    echo "];";
+        $colors = explode(",", $data->items[0]->subject_status);
+        $subjects = $data->items[0]->n_subj;
+        $percent = 100/$subjects;
+        echo "var subject_pie = [ ";
+        for  ($i = 1; $i <= $subjects; $i++) {  
+            echo "{\"category\": ".$i.",
+                    \"value\": ".$percent.",
+                    \"userColor\": \"".$colors[$i-1]."\"
+                },";
+        }
+        echo "];";
     ?>
     </script>
     <script>
@@ -72,7 +71,7 @@
                 To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="/js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
             </p>
 
-                <div id="chart"></div>
+                <div id="chart_subjects_index"></div>
                 <button onclick="post_slice_colors()">Enviar</button>
             Resultado: <span id="resultado">0</span>
         </div>
@@ -81,7 +80,7 @@
 
 </div>
 
-    <script src="js/points_assign.js"></script>
+    <script src="js/pie_chart_config.js"></script>
     <script src="js/ui.js"></script>
 
 </body>
