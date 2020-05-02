@@ -33,6 +33,67 @@ class Api{
             echo json_encode(array('message' => 'No elements'));
         }
     }
+
+
+    function getLatestPoints(){
+
+        $points_class = new Points();
+        $points = array();
+        $points["items"] = array();
+
+        $res = $points_class->getLatestPoints();
+
+        if($res->rowCount()){
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)){
+    
+                $item=array(
+                    "points_by_day" => $row['points_by_day'],
+                    "point_date" => $row['point_date']
+                );
+                array_push($points["items"], $item);
+            }
+        
+            echo json_encode($points);
+        }else{
+            echo json_encode(array('message' => 'No elements'));
+        }
+    }
+
+    function getPointsHistory(){
+
+        $points_class = new Points();
+        $points = array();
+        $points = array();
+
+        $res = $points_class->getAllPoints();
+
+        if($res->rowCount()){
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)){
+    
+                $item=array(
+                    "points_by_day" => $row['points_by_day'],
+                    "point_date" => $row['point_date']
+                );
+                array_push($points, $item);
+            }
+        
+            echo json_encode($points);
+        }else{
+            echo json_encode(array('message' => 'No elements'));
+        }
+    }
+
+    function setNewDay($n_subj, $n_att){
+        $student_class = new Student();
+        echo 'hola';
+        $res1 = $student_class->setNewDay($n_subj, $n_att);
+        
+        
+        echo "hola2";
+        $points_class = new Points();
+        $res2 = $points_class->addNewRecord();
+        return  array($res1, $res2);
+    }
 }
 
 ?>

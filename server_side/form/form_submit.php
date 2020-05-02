@@ -45,13 +45,32 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitud
     }
 }
 
-function saveSubjectStatus($data)
+function saveSubjectStatus($json)
 {
     global $connection;
-    $subject_status = implode(",", $data);
+    //Conversion de Json de PHP
+    $data=json_decode($json, true);
+    //Incluimos el array con los colores actualizados a la tabla gbpi_web
+    $subject_status = implode(",", $data[0]);
     $query = "UPDATE `gbpi`.`gbpi_web` 
               SET `subject_status` = '$subject_status' 
               WHERE `gbpi_web`.`student_name` = 'student1'";
+    $callToDb = $connection->prepare($query);
+    $result = $callToDb->execute();
+    //Incluimos los puntos actualizados a la tabla points. 
+    //Verde vale 2 puntos, Amarillo vale 1 punto y rojo vale 0
+    $green=$data[1][0];
+    $yellow=$data[1][1];
+    //$red=$data[1][3];
+    $points = $green*2+$yellow;
+    echo '"<br>"datos:'.implode(",", $data[1])."<br>";
+    echo '"<br>"verde:'.$green."<br>";
+    echo 'ama:'.$yellow."<br>";
+    echo 'total:'.$points."<br>";
+    $query = "UPDATE `gbpi`.`points` 
+              SET `points_by_day` = '$points' 
+              ORDER BY `id_points` DESC LIMIT 1";
+    echo '"<br>"consulta:'.$query."<br>";          
     $callToDb = $connection->prepare($query);
     $result = $callToDb->execute();
     echo "resultado:";

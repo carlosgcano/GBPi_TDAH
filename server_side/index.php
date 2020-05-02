@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <?php
+    //Inicializacion nuevo dia
+    $json_points = file_get_contents('http://localhost/api/points');
+    $student_points = json_decode($json_points);      
+    $last_date = date('Y/m/d', strtotime( $student_points->items[0]->point_date));
+    if (date("Y/m/d")  > $last_date){
+        file_get_contents('http://localhost/api/points/setNewDay.php');
+    }
+    ?>
+
     <title>GBpi Server</title>    
     <link rel="stylesheet" href="css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     <link rel="stylesheet" href="css/layouts/side-menu.css">
@@ -18,11 +28,14 @@
 
     <script language='javascript'>
     <?php
-        $json = file_get_contents('http://localhost/api/');      
-        $data = json_decode($json); 
+        $json1 = file_get_contents('http://localhost/api/'); 
+        $student_data = json_decode($json1);
 
-        $colors = explode(",", $data->items[0]->subject_status);
-        $subjects = $data->items[0]->n_subj;
+
+        
+
+        $colors = explode(",", $student_data->items[0]->subject_status);
+        $subjects = $student_data->items[0]->n_subj;
         $percent = 100/$subjects;
         echo "var subject_pie = [ ";
         for  ($i = 1; $i <= $subjects; $i++) {  
@@ -32,6 +45,7 @@
                 },";
         }
         echo "];";
+
     ?>
     </script>
     <script>

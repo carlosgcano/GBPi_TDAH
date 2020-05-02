@@ -57,11 +57,30 @@ function onSeriesClick(e){
 
 function get_slice_colors() {
     var res = [];
+    res.push([]);
+    var green=0;
+    var yellow=0;
+    var red = 0;
     var chart_slices_values = Object.entries($("#chart_subjects_index").data("kendoChart"))[18][1][0];
     for (var i=0; i < chart_slices_values.data.length ; ++i){
-      res.push(Object.values(chart_slices_values.data)[i].userColor);       
+      var aux = Object.values(chart_slices_values.data)[i].userColor;
+      res[0].push(aux);       
+      switch(aux) {
+        case "green":
+          green++;
+          break;
+        case "yellow":
+          yellow++;
+          break;
+        case "red":
+          red++;
+          break;
+      }
     }
-    return res; 
+    res.push([]);
+    res[1].push(green, yellow, red);  
+    //console.log(JSON.stringify(Object.assign({}, res)));
+    return JSON.stringify(Object.assign({}, res));
 }
 
 
