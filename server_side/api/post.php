@@ -45,6 +45,17 @@ class Points extends DB{
         return $query;
     }
 
+    function getWeekPoints(){
+        $query = $this->connect()->query('SELECT SUM(points_by_day) 
+                                          AS "Total_Week_Points"
+                                          FROM points 
+                                          WHERE WEEK(point_date,1) = (SELECT WEEK(point_date,1) 
+                                                                      FROM points 
+                                                                      ORDER BY id_points 
+                                                                      DESC LIMIT 1)');
+        return $query;
+    }
+
 }
 
 ?>

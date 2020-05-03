@@ -79,7 +79,6 @@ function get_slice_colors() {
     }
     res.push([]);
     res[1].push(green, yellow, red);  
-    //console.log(JSON.stringify(Object.assign({}, res)));
     return JSON.stringify(Object.assign({}, res));
 }
 

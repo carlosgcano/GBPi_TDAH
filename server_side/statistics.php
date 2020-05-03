@@ -20,6 +20,8 @@
         //Obtencion de datos de colores
         $json = file_get_contents('http://localhost/api/');      
         $data = json_decode($json); 
+        $json1 = file_get_contents('http://localhost/api/points/getPointsHistory.php');      
+        $data_line_chart = json_decode($json1); 
 
         //Colores grafico subjects
         $colors = explode(",", $data->items[0]->subject_status);
@@ -46,33 +48,51 @@
                 },";
         }
         echo "];";
+
+        //Datos grafico puntuacion           
+        $aux_score='';    
+        $aux_date=''; 
+        foreach ($data_line_chart as $key) {
+            $aux_score=$aux_score.$key->points_by_day.',';            
+            $aux_date=$aux_date."\"".$key->point_date."\",";
+        }
+        echo "var score_chart = [".rtrim($aux_score, ",")."];";
+        echo "var score_date_chart = [".rtrim($aux_date, ",")."];"; 
+        
+        
     ?>
     </script>
 
     <div id="main">
         <div class="header">
-            <h1>Stats</h1>
-            <h2>Statistics from the actitud and subjects</h2>
-        </div>
+            <h1>Estadísticas</h1>
 
-        <div class="content">
-            <h2 class="content-subhead">How to use this layout</h2>
-            <p>
-                To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="/js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
-            </p>
 
-            <h2 class="content-subhead">Try Resizing your Browser</h2>
+            <h2 class="content-subhead">Estado del alumno</h2>
             <p>
                 <div class="pure-g">
                 <div class="pure-u-1-2" id="chart_subjects_stats"></div>
                 <div class="pure-u-1-2" id="chart_attitudes_stats"></div>
                 </div>
             </p>
+
+            <h2 class="content-subhead">Puntuaciones conseguidas por día</h2>
+            <p>
+                <div class="pure-g">
+                <div class="pure-u-1-1" id="chart_score_week"></div>
+                
+                </div>
+            </p>
+
+
+
         </div>
     </div>
 </div>
 
+
 <script src="js/pie_chart_config.js"></script>
+<script src="js/line_chart_config.js"></script>
 <script src="js/ui.js"></script>
 
 </body>

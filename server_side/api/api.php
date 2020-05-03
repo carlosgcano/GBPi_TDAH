@@ -63,7 +63,6 @@ class Api{
 
         $points_class = new Points();
         $points = array();
-        $points = array();
 
         $res = $points_class->getAllPoints();
 
@@ -83,13 +82,20 @@ class Api{
         }
     }
 
+    function getWeekPointsCount(){
+
+        $points_class = new Points();
+        $res = $points_class->getWeekPoints();
+        if($res->rowCount()){           
+            echo json_encode($res->fetch(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode(array('message' => 'No elements'));
+        }
+    }
+
     function setNewDay($n_subj, $n_att){
         $student_class = new Student();
-        echo 'hola';
         $res1 = $student_class->setNewDay($n_subj, $n_att);
-        
-        
-        echo "hola2";
         $points_class = new Points();
         $res2 = $points_class->addNewRecord();
         return  array($res1, $res2);
