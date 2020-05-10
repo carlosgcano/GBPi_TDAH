@@ -14,8 +14,11 @@ class Utils(object):
 	def get_actitudes(data):
 		return data['items'][0]['n_act']
 
-	def get_points(data):
-	    return data['items'][0]['total_points']
+	def get_points():
+		address = "http://localhost/api/points/getWeekPointsCount.php"
+		url=urllib.request.urlopen(address)
+		data = json.loads(url.read().decode())
+		return data['Total_Week_Points']
 
 	def get_medal_value_from_server(data):
 	    return data['items'][0]['n_medal']
@@ -37,13 +40,12 @@ class Utils(object):
 		trophies_value = int(Utils.get_trophy_value_from_server(total_data))
 		medals_value = int(Utils.get_medal_value_from_server(total_data))
 		
-		total_points = int(Utils.get_points(total_data))
+		total_points = int(Utils.get_points())
 		trophies_points = total_points//( trophies_value * medals_value )
 		medals_points = (total_points%( trophies_value * medals_value ))//medals_value
 		print("total points:"+str(total_points))
 		print("trophies points:"+str(trophies_points))
 		print("medals value:"+str(medals_value))
-		print("calculo total:"+str(total_points%( trophies_points * medals_value )))
 		print("medals points:"+str(medals_points))
 		return trophies_points, medals_points
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'interfaz.ui'
 #
-# Created: Fri Apr 17 21:16:44 2020
+# Created: Sun May 10 11:16:46 2020
 #      by: PyQt5 UI code generator 5.3.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,6 +17,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 341, 311))
+        self.stackedWidget.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
@@ -97,7 +98,18 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.listWidget = QtWidgets.QListWidget(self.page_3)
         self.listWidget.setGeometry(QtCore.QRect(10, 40, 321, 261))
+        self.listWidget.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.listWidget.setObjectName("listWidget")
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.listWidget.addItem(item)
         self.up_arrow = QtWidgets.QLabel(self.page_3)
         self.up_arrow.setGeometry(QtCore.QRect(140, 0, 71, 21))
         self.up_arrow.setText("")
@@ -105,6 +117,27 @@ class Ui_MainWindow(object):
         self.up_arrow.setScaledContents(True)
         self.up_arrow.setObjectName("up_arrow")
         self.stackedWidget.addWidget(self.page_3)
+        self.page_4 = QtWidgets.QWidget()
+        self.page_4.setObjectName("page_4")
+        self.mplwindow_4 = QtWidgets.QWidget(self.page_4)
+        self.mplwindow_4.setEnabled(False)
+        self.mplwindow_4.setGeometry(QtCore.QRect(100, 10, 231, 301))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mplwindow_4.sizePolicy().hasHeightForWidth())
+        self.mplwindow_4.setSizePolicy(sizePolicy)
+        self.mplwindow_4.setMaximumSize(QtCore.QSize(573, 16777215))
+        self.mplwindow_4.setMouseTracking(False)
+        self.mplwindow_4.setObjectName("mplwindow_4")
+        self.mplvl_4 = QtWidgets.QVBoxLayout(self.mplwindow_4)
+        self.mplvl_4.setSpacing(7)
+        self.mplvl_4.setContentsMargins(0, 0, 0, 0)
+        self.mplvl_4.setObjectName("mplvl_4")
+        self.label_3 = QtWidgets.QLabel(self.page_4)
+        self.label_3.setGeometry(QtCore.QRect(0, 10, 161, 19))
+        self.label_3.setObjectName("label_3")
+        self.stackedWidget.addWidget(self.page_4)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -116,6 +149,20 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Subjects"))
         self.label_2.setText(_translate("MainWindow", "Games!"))
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        item = self.listWidget.item(0)
+        item.setText(_translate("MainWindow", "Tetris"))
+        item = self.listWidget.item(1)
+        item.setText(_translate("MainWindow", "2048"))
+        item = self.listWidget.item(2)
+        item.setText(_translate("MainWindow", "Snake"))
+        item = self.listWidget.item(3)
+        item.setText(_translate("MainWindow", "Arkanoid"))
+        item = self.listWidget.item(4)
+        item.setText(_translate("MainWindow", "Asteroids"))
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+        self.label_3.setText(_translate("MainWindow", "Tetris"))
 
     def add_medal(self, name, x_translation):
         self.name = QtWidgets.QLabel(self.premios)
@@ -136,13 +183,3 @@ class Ui_MainWindow(object):
         self.name.setPixmap(QtGui.QPixmap("images/trophy.png"))
         self.name.setScaledContents(True)
         self.name.setObjectName(name)
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-
