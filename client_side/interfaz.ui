@@ -227,6 +227,21 @@
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
       </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhNone</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>false</bool>
+      </property>
+      <property name="selectionRectVisible">
+       <bool>false</bool>
+      </property>
+      <property name="currentRow">
+       <number>0</number>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
       <item>
        <property name="text">
         <string>Tetris</string>
@@ -324,8 +339,6 @@
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="images/fgh.png"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

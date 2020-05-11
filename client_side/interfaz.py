@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'interfaz.ui'
 #
-# Created: Sun May 10 11:16:46 2020
+# Created: Mon May 11 07:43:09 2020
 #      by: PyQt5 UI code generator 5.3.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -99,6 +99,9 @@ class Ui_MainWindow(object):
         self.listWidget = QtWidgets.QListWidget(self.page_3)
         self.listWidget.setGeometry(QtCore.QRect(10, 40, 321, 261))
         self.listWidget.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.listWidget.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.listWidget.setAlternatingRowColors(False)
+        self.listWidget.setSelectionRectVisible(False)
         self.listWidget.setObjectName("listWidget")
         item = QtWidgets.QListWidgetItem()
         self.listWidget.addItem(item)
@@ -142,6 +145,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
+        self.listWidget.setCurrentRow(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -149,6 +153,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Subjects"))
         self.label_2.setText(_translate("MainWindow", "Games!"))
+        self.listWidget.setSortingEnabled(False)
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.listWidget.setSortingEnabled(False)
         item = self.listWidget.item(0)
@@ -163,6 +168,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Asteroids"))
         self.listWidget.setSortingEnabled(__sortingEnabled)
         self.label_3.setText(_translate("MainWindow", "Tetris"))
+
 
     def add_medal(self, name, x_translation):
         self.name = QtWidgets.QLabel(self.premios)

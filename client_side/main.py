@@ -109,14 +109,13 @@ if __name__ == "__main__":
         window.add_medal(name, x_pos) 
     if window.trophies_points < 1:
         window.down_arrow.setPixmap(QtGui.QPixmap(""))
-    else:
-        
+    else:        
         for i in range(window.trophies_points):        
             x_pos+=52
-            print(x_pos)
             name="trophy_"+str(i)
             window.add_trophy(name, x_pos)
-
+        for index in range(window.listWidget.count()-window.trophies_points):
+            window.listWidget.takeItem(0)
         #tetris = Tetris()
         #board=Board()
         #window.mplvl_4.addWidget(tetris)
