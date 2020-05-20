@@ -22,7 +22,8 @@ class Api{
                     "n_trophy" => $row['n_trophy'],
                     "student_name" => $row['student_name'],
                     "subject_status" => $row['subject_status'],
-                    "attitude_status" => $row['attitude_status']
+                    "attitude_status" => $row['attitude_status'],
+                    "game_time" => $row['game_time']
                 );
                 array_push($students["items"], $item);
             }

@@ -34,6 +34,9 @@ class Utils(object):
 		res = data['items'][0]['attitude_status']
 		return res.split(",")
 
+	def get_game_time(data):
+		return data['items'][0]['game_time']
+
 	def get_trophies_and_medals_from_points(total_data):
 		total_points, trophies_value, trophies_points, medals_value, medals_points = 0,0,0,0,0
 

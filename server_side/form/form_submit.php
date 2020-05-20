@@ -19,7 +19,13 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitud
     global $connection;
 
     $query = "  UPDATE `gbpi`.`gbpi_web` 
-                SET `n_subj`='$n_subj',`n_act`='$n_act',`n_medal`='$n_medal',`n_trophy`='$n_trophy',`subject_status`='$subject_status',`attitude_status`='$attitude_status' 
+                SET `n_subj`='$n_subj',
+                    `n_act`='$n_act',
+                    `n_medal`='$n_medal',
+                    `n_trophy`='$n_trophy',
+                    `subject_status`='$subject_status',
+                    `attitude_status`='$attitude_status',
+                    `game_time`='$game_time'
                 WHERE `gbpi_web`.`student_name`='student1'";
 
     $callToDb = $connection->prepare($query);
@@ -85,7 +91,8 @@ if (isset($_POST['submit']))
     $n_trophy   = $_POST['n_trophy'];
     $subject_status = rtrim(str_repeat("grey,", $n_subj) , ",");
     $attitude_status = rtrim(str_repeat("grey,", $n_act) , ",");
-    $result = saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status);
+    $game_time   = $_POST['game_time'];
+    $result = saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status,$game_time);
     echo $result;
 }
 elseif (isset($_POST['slice_colors']))

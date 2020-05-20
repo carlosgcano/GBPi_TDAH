@@ -1,5 +1,4 @@
 from interfaz import *
-
 from utils import *
 import matplotlib
 matplotlib.use("Qt5Agg")
@@ -14,6 +13,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     os.chdir("/home/c/Escritorio/qt5/client_side")
     total_data=Utils.get_all()
     trophies_points,medals_points = Utils.get_trophies_and_medals_from_points(total_data)
+    game_time = Utils.get_game_time(total_data)
 
     def __init__(self, *args, **kwargs):
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
@@ -62,7 +62,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #        board.keyPressEvent(window, event) 
 
     def execute_game(self):      
-        os.system("/usr/bin/vba games/"+self.listWidget.currentItem().text()+".gb")
+        os.system("timeout -k 10 "+self.game_time+"s  /usr/bin/vba games/"+self.listWidget.currentItem().text()+".gb")
         juego=self.listWidget.currentItem().text()+".gb"
         #p = subprocess.run(["/usr/bin/vba games/"+self.listWidget.currentItem().text()+".gb"],shell=True)
         #try:
