@@ -17,9 +17,20 @@ class Student extends DB{
         $query = $this->connect()->query("UPDATE `gbpi_web` 
                                           SET `subject_status`='".$subject_status."',`attitude_status`='".$attitude_status."' 
                                           WHERE `student_name`= 'student1'");
-//var_dump($query);
         return $query;
     }
+
+    function add_point_attitude_student($att){
+        $aux=substr_count($att, 'green');
+        $aux2=substr_count($att, 'grey');
+        $attitude_status = rtrim(str_repeat("green,", $aux+1).str_repeat("grey,", $aux2-1) , ",");    
+        $query = $this->connect()->query("UPDATE `gbpi_web` 
+                                          SET `attitude_status`='".$attitude_status."' 
+                                          WHERE `student_name`= 'student1'");
+        return $query;
+    }
+
+
 
 }
 
@@ -55,7 +66,13 @@ class Points extends DB{
                                                                       DESC LIMIT 1)');
         return $query;
     }
-
+    function add_point_attitude_points(){
+        $query = $this->connect()->query("UPDATE `points` 
+                                          SET `points_by_day`=`points_by_day`+1 
+                                          ORDER BY id_points DESC
+                                          LIMIT 1");
+        return $query;
+    }
 }
 
 ?>

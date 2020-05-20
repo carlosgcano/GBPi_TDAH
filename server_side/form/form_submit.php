@@ -14,7 +14,7 @@ catch(PDOException $exception)
     echo "Connection error: " . $exception->getMessage();
 }
 
-function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status)
+function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitude_status,$game_time)
 {
     global $connection;
 

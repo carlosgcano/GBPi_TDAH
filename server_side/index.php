@@ -30,10 +30,7 @@
     <?php
         $json1 = file_get_contents('http://localhost/api/'); 
         $student_data = json_decode($json1);
-
-
-        
-
+       
         $colors = explode(",", $student_data->items[0]->subject_status);
         $subjects = $student_data->items[0]->n_subj;
         $percent = 100/$subjects;

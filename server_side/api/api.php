@@ -20,7 +20,6 @@ class Api{
                     "n_act" => $row['n_act'],
                     "n_medal" => $row['n_medal'],
                     "n_trophy" => $row['n_trophy'],
-                    "total_points" => $row['total_points'],
                     "student_name" => $row['student_name'],
                     "subject_status" => $row['subject_status'],
                     "attitude_status" => $row['attitude_status']
@@ -98,6 +97,14 @@ class Api{
         $res1 = $student_class->setNewDay($n_subj, $n_att);
         $points_class = new Points();
         $res2 = $points_class->addNewRecord();
+        return  array($res1, $res2);
+    }
+
+    function add_point_attitude($attitude_status){
+        $student_class = new Student();
+        $res1 = $student_class->add_point_attitude_student($attitude_status);
+        $points_class = new Points();
+        $res2 = $points_class->add_point_attitude_points();
         return  array($res1, $res2);
     }
 }

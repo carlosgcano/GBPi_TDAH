@@ -26,17 +26,20 @@
                 <form action="form/form_submit.php" class="alt" method="POST">
                     <div class="row uniform">
                     <div class="n_subj">
-                    <input name="n_subj" placeholder="Asignaturas" type="number" min="1" max="10">
+                    <input name="n_subj" placeholder="Asignaturas" type="number" min="1" max="10" required>
                     </div>                    
                     <div class="n_act">
-                    <input name="n_act" placeholder="Actitudes" type="number" min="1" max="10">
+                    <input name="n_act" placeholder="Actitudes" type="number" min="1" max="10" required>
                     </div>
                     <div class="n_medal">
-                    <input name="n_medal" placeholder="Medallas" type="number" min="1" max="10">
+                    <input name="n_medal" placeholder="Medallas" type="number" min="1" max="10" required>
                     </div>
                     <div class="n_trophy">
-                    <input name="n_trophy" placeholder="Trofeos" type="number" min="1" max="10">
-                    </div>                    
+                    <input name="n_trophy" placeholder="Trofeos" type="number" min="1" max="10" required>
+                    </div>    
+                    <div class="game_time">
+                    <input name="game_time" placeholder="Tiempo de juego" type="number" min="1" max="60" required>
+                    </div>                 
                     </div>
                     <br/>
                     <input class="alt" value="Submit" name="submit" type="submit">
