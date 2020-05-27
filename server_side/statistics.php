@@ -26,10 +26,11 @@
         //Colores grafico subjects
         $colors = explode(",", $data->items[0]->subject_status);
         $subjects = $data->items[0]->n_subj;
+        $labels = array( "Matemáticas", "Lengua", "Inglés", "Naturales", "Francés", "Plástica", "Gimnasia", "Religión" );
         $percent = 100/$subjects;
         echo "var subject_pie = [ ";
         for  ($i = 1; $i <= $subjects; $i++) {  
-            echo "{\"category\": ".$i.",
+            echo "{\"category\": \"".$labels[$i-1]."\",
                     \"value\": ".$percent.",
                     \"userColor\": \"".$colors[$i-1]."\"
                 },";
@@ -39,10 +40,11 @@
         //Colores grafico attitudes
         $colors = explode(",", $data->items[0]->attitude_status);
         $attitudes = $data->items[0]->n_act;
+        $labels = array( "Ducha", "Dientes", "Desayuno", "Almuerzo", "Cena");
         $percent = 100/$attitudes;
         echo "var attitudes_pie = [ ";
         for  ($i = 1; $i <= $attitudes; $i++) {  
-            echo "{\"category\": ".$i.",
+            echo "{\"category\": \"".$labels[$i-1]."\",
                     \"value\": ".$percent.",
                     \"userColor\": \"".$colors[$i-1]."\"
                 },";

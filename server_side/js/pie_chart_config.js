@@ -4,7 +4,7 @@ $("#chart_subjects_index").kendoChart({
   },
   title: {
     align: "center",
-    text: "Subjects"
+    text: "Editar puntos por asignaturas"
   },
   legend: {
     visible: false
@@ -12,7 +12,9 @@ $("#chart_subjects_index").kendoChart({
   seriesDefaults: {
     type: "pie",
     labels: {
-      visible: false,
+      template: "#= category #",
+      position: "outsideEnd",
+      visible: true,
       background: "transparent"
     }
   },
@@ -89,7 +91,7 @@ $("#chart_subjects_stats").kendoChart({
   },
   title: {
     align: "center",
-    text: "Subjects"
+    text: "Puntos por asignaturas"
   },
   legend: {
     visible: false
@@ -97,7 +99,9 @@ $("#chart_subjects_stats").kendoChart({
   seriesDefaults: {
     type: "pie",
     labels: {
-      visible: false,
+      template: "#= category #",
+      position: "outsideEnd",
+      visible: true,
       background: "transparent"
     }
   },
@@ -114,7 +118,7 @@ $("#chart_attitudes_stats").kendoChart({
   },
   title: {
     align: "center",
-    text: "Attitudes"
+    text: "Puntos de actitud"
   },
   legend: {
     visible: false
@@ -122,7 +126,9 @@ $("#chart_attitudes_stats").kendoChart({
   seriesDefaults: {
     type: "pie",
     labels: {
-      visible: false,
+      template: "#= category #",
+      position: "outsideEnd",
+      visible: true,
       background: "transparent"
     }
   },

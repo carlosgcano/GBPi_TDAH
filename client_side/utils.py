@@ -15,10 +15,10 @@ class Utils(object):
 		return data['items'][0]['n_act']
 
 	def get_points():
-		address = "http://localhost/api/points/getWeekPointsCount.php"
+		address = "http://localhost/api/points/"
 		url=urllib.request.urlopen(address)
 		data = json.loads(url.read().decode())
-		return data['Total_Week_Points']
+		return data['items'][0]['points_by_day']
 
 	def get_medal_value_from_server(data):
 	    return data['items'][0]['n_medal']

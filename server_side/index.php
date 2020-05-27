@@ -30,13 +30,13 @@
     <?php
         $json1 = file_get_contents('http://localhost/api/'); 
         $student_data = json_decode($json1);
-       
+        $labels = array( "Matemáticas", "Lengua", "Inglés", "Naturales", "Francés", "Plástica", "Gimnasia", "Religión" );
         $colors = explode(",", $student_data->items[0]->subject_status);
         $subjects = $student_data->items[0]->n_subj;
         $percent = 100/$subjects;
         echo "var subject_pie = [ ";
         for  ($i = 1; $i <= $subjects; $i++) {  
-            echo "{\"category\": ".$i.",
+            echo "{\"category\": \"".$labels[$i-1]."\",
                     \"value\": ".$percent.",
                     \"userColor\": \"".$colors[$i-1]."\"
                 },";
