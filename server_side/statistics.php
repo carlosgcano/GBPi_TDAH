@@ -40,7 +40,7 @@
         //Colores grafico attitudes
         $colors = explode(",", $data->items[0]->attitude_status);
         $attitudes = $data->items[0]->n_act;
-        $labels = array( "Ducha", "Dientes", "Desayuno", "Almuerzo", "Cena");
+        $labels = array( "Ducha", "Dientes", "Leer", "Desayuno", "Almuerzo", "Cena");
         $percent = 100/$attitudes;
         echo "var attitudes_pie = [ ";
         for  ($i = 1; $i <= $attitudes; $i++) {  
@@ -56,7 +56,7 @@
         $aux_date=''; 
         foreach ($data_line_chart as $key) {
             $aux_score=$aux_score.$key->points_by_day.',';            
-            $aux_date=$aux_date."\"".$key->point_date."\",";
+            $aux_date=$aux_date."\"".strtok($key->point_date,  ' ')."\",";
         }
         echo "var score_chart = [".rtrim($aux_score, ",")."];";
         echo "var score_date_chart = [".rtrim($aux_date, ",")."];"; 

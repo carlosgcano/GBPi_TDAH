@@ -16,9 +16,14 @@
     <div id="main">
         <div class="header">
             <h1>About</h1>
-            <h2>The author</h2>
-            <div class="pure-u-1-4">
+            
+            <div class="pure-u-1-3">
+                <h2>El autor</h2>
                 <img src="images/about.jpg" alt="Avatar" style="width:200px; border-radius: 50%;">
+            </div>
+            <div class="pure-u-1-3">
+                <h2>El proyecto</h2>
+                <img src="images/pi4logo.png" alt="Avatar" style="width:200px; border-radius: 50%;">
             </div>
         </div>
 

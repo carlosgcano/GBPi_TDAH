@@ -36,6 +36,8 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitud
         return '
             <html>
                 <head>
+                    <link rel="stylesheet" href="../css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+                    <link rel="stylesheet" href="../css/layouts/side-menu.css">
                     <script language="JavaScript">
                         var time = null
                         function move() {
@@ -44,7 +46,11 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitud
                     </script>
                 </head>
                 <body onload="timer=setTimeout(\'move()\',1000)">
-                    <h2>Información modificada correctamente</h2>
+                    <div id="main">
+                        <div class="header">
+                            <h2>Información modificada correctamente</h2>
+                        </div>
+                    </div>
                 </body>
             </html>
         ';
@@ -67,20 +73,14 @@ function saveSubjectStatus($json)
     //Verde vale 2 puntos, Amarillo vale 1 punto y rojo vale 0
     $green=$data[1][0];
     $yellow=$data[1][1];
-    //$red=$data[1][3];
     $points = $green*2+$yellow;
-    echo '"<br>"datos:'.implode(",", $data[1])."<br>";
-    echo '"<br>"verde:'.$green."<br>";
-    echo 'ama:'.$yellow."<br>";
-    echo 'total:'.$points."<br>";
     $query = "UPDATE `gbpi`.`points` 
               SET `points_by_day` = '$points' 
-              ORDER BY `id_points` DESC LIMIT 1";
-    echo '"<br>"consulta:'.$query."<br>";          
+              ORDER BY `id_points` DESC LIMIT 1";          
     $callToDb = $connection->prepare($query);
     $result = $callToDb->execute();
-    echo "resultado:";
-    var_dump($result);
+    echo "Puntos añadidos al sistema satisfactoriamente";
+    
 }
 
 if (isset($_POST['submit']))

@@ -26,10 +26,10 @@
                 <form action="form/form_submit.php" class="alt" method="POST">
                     <div class="row uniform">
                     <div class="n_subj">
-                    <input name="n_subj" placeholder="Asignaturas" type="number" min="1" max="10" required>
+                    <input name="n_subj" placeholder="Asignaturas" type="number" min="1" max="8" required>
                     </div>                    
                     <div class="n_act">
-                    <input name="n_act" placeholder="Actitudes" type="number" min="1" max="10" required>
+                    <input name="n_act" placeholder="Actitudes" type="number" min="1" max="6" required>
                     </div>
                     <div class="n_medal">
                     <input name="n_medal" placeholder="Medallas" type="number" min="1" max="10" required>

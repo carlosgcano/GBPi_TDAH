@@ -29,8 +29,8 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="page">
-     <widget class="QWidget" name="premios" native="true">
+    <widget class="QWidget" name="Pagina_principal">
+     <widget class="QWidget" name="Premios" native="true">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -40,7 +40,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QWidget" name="mplwindow" native="true">
+     <widget class="QWidget" name="Asignaturas" native="true">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -69,7 +69,7 @@
       </property>
       <layout class="QVBoxLayout" name="mplvl"/>
      </widget>
-     <widget class="QWidget" name="mplwindow_2" native="true">
+     <widget class="QWidget" name="Actitudes" native="true">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -114,7 +114,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="Titulo">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -137,8 +137,8 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_3">
-     <widget class="QLabel" name="label_2">
+    <widget class="QWidget" name="Pagina_juegos">
+     <widget class="QLabel" name="Titulo_2">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -151,7 +151,7 @@
        <string>Games!</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="Lista_juegos">
       <property name="geometry">
        <rect>
         <x>10</x>

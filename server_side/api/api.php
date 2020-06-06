@@ -101,9 +101,9 @@ class Api{
         return  array($res1, $res2);
     }
 
-    function add_point_attitude($attitude_status){
+    function add_point_attitude($attitude_id){
         $student_class = new Student();
-        $res1 = $student_class->add_point_attitude_student($attitude_status);
+        $res1 = $student_class->add_point_attitude_student($attitude_id);
         $points_class = new Points();
         $res2 = $points_class->add_point_attitude_points();
         return  array($res1, $res2);

@@ -20,14 +20,21 @@ class Student extends DB{
         return $query;
     }
 
-    function add_point_attitude_student($att){
-        $aux=substr_count($att, 'green');
-        $aux2=substr_count($att, 'grey');
-        $attitude_status = rtrim(str_repeat("green,", $aux+1).str_repeat("grey,", $aux2-1) , ",");    
-        $query = $this->connect()->query("UPDATE `gbpi_web` 
+    function add_point_attitude_student($att_id){
+        $res=false;
+        $json1 = file_get_contents('http://localhost/api/'); 
+        $student_data = json_decode($json1);
+        $attitude_status = $student_data->items[0]->attitude_status;
+        $attitude_status = explode(",", $attitude_status);
+        if ($attitude_status[intval($att_id)]!="green"){
+          $replace = array(intval($att_id) => "green"); 
+          $attitude_status = array_replace($attitude_status, $replace);
+          $attitude_status = implode(",", $attitude_status);
+          $res = $this->connect()->query("UPDATE `gbpi_web` 
                                           SET `attitude_status`='".$attitude_status."' 
                                           WHERE `student_name`= 'student1'");
-        return $query;
+        }
+        return $res;
     }
 
 

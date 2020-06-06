@@ -15,6 +15,9 @@ $("#chart_score_week").kendoChart({
     }],
 
     categoryAxis: {
+            labels: {
+                rotation: -45
+            },
         categories: score_date_chart
 
     },
