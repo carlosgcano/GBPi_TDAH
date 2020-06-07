@@ -3,6 +3,7 @@
 <head>
     <title>GBpi Server</title>    
     <link rel="stylesheet" href="css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/form_style.css">
     <link rel="stylesheet" href="css/layouts/side-menu.css">
 </head>
 <body>
@@ -17,32 +18,41 @@
 
     <div id="main">
         <div class="header">
-            <h1>Configurations</h1>
+            <h1>Preferencias</h1>
         </div>
-
         <div class="content">
-            <h2 class="content-subhead">How to use this layout</h2>
-            <div class="pure-g">
-                <form action="form/form_submit.php" class="alt" method="POST">
-                    <div class="row uniform">
-                    <div class="n_subj">
-                    <input name="n_subj" placeholder="Asignaturas" type="number" min="1" max="8" required>
-                    </div>                    
-                    <div class="n_act">
-                    <input name="n_act" placeholder="Actitudes" type="number" min="1" max="6" required>
-                    </div>
-                    <div class="n_medal">
-                    <input name="n_medal" placeholder="Medallas" type="number" min="1" max="10" required>
-                    </div>
-                    <div class="n_trophy">
-                    <input name="n_trophy" placeholder="Trofeos" type="number" min="1" max="10" required>
-                    </div>    
-                    <div class="game_time">
-                    <input name="game_time" placeholder="Tiempo de juego" type="number" min="1" max="60" required>
-                    </div>                 
-                    </div>
-                    <br/>
-                    <input class="alt" value="Submit" name="submit" type="submit">
+            <div class="pure-u-1-1">
+                <form class="form-style-7" action="form/form_submit.php" method="POST">
+                    <ul>
+                    <li>
+                        <label for="n_subj">Número de asignaturas</label>
+                        <input type="number" name="n_subj" min="1" max="8" required>
+                        <span>Inserta el número de asignaturas que tendrá el alumno.</span>
+                    </li>
+                    <li>
+                        <label for="n_act">Actitudes</label>
+                        <input type="number" name="n_act" min="1" max="6" required>
+                        <span>Inserta el número de actividades actitudinales que tendrá el niño.</span>
+                    </li>
+                    <li>
+                        <label for="n_medal">Medallas</label>
+                        <input type="number" name="n_medal" min="1" max="10" required>
+                        <span>Puntos por medalla</span>
+                    </li>
+                    <li>
+                        <label for="n_trophy">Medallas</label>
+                        <input type="number" name="n_trophy" min="1" max="10" required>
+                        <span>Medallas por trofeo</span>
+                    </li>
+                    <li>
+                        <label for="game_time">Tiempo</label>
+                        <input type="number" name="game_time" min="1" max="60" required>
+                        <span>Tiempo máximo de juego</span>
+                    </li>
+                    <li>
+                        <input class="alt"type="submit" value="Enviar" name="submit">
+                    </li>
+                    </ul>
                 </form>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'interfaz.ui'
 #
-# Created: Mon Jun  1 21:34:49 2020
+# Created: Sun Jun  7 18:05:17 2020
 #      by: PyQt5 UI code generator 5.3.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -52,15 +52,19 @@ class Ui_MainWindow(object):
         self.mplvl_2.setContentsMargins(0, 0, 0, 0)
         self.mplvl_2.setObjectName("mplvl_2")
         self.down_arrow = QtWidgets.QLabel(self.Pagina_principal)
-        self.down_arrow.setGeometry(QtCore.QRect(130, 300, 71, 21))
+        self.down_arrow.setGeometry(QtCore.QRect(140, 300, 71, 21))
         self.down_arrow.setText("")
         self.down_arrow.setPixmap(QtGui.QPixmap("images/down-arrow.gif"))
         self.down_arrow.setScaledContents(True)
         self.down_arrow.setObjectName("down_arrow")
         self.Titulo = QtWidgets.QLabel(self.Pagina_principal)
-        self.Titulo.setGeometry(QtCore.QRect(20, 10, 301, 19))
+        self.Titulo.setGeometry(QtCore.QRect(40, 10, 261, 21))
         self.Titulo.setFrameShape(QtWidgets.QFrame.Box)
         self.Titulo.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.Titulo.setLineWidth(0)
+        self.Titulo.setText("")
+        self.Titulo.setPixmap(QtGui.QPixmap("images/pi4logo-letters.png"))
+        self.Titulo.setScaledContents(True)
         self.Titulo.setAlignment(QtCore.Qt.AlignCenter)
         self.Titulo.setObjectName("Titulo")
         self.stackedWidget.addWidget(self.Pagina_principal)
@@ -103,7 +107,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.Titulo.setText(_translate("MainWindow", "Pi 4 Attention"))
         self.Titulo_2.setText(_translate("MainWindow", "Games!"))
         self.Lista_juegos.setSortingEnabled(False)
         __sortingEnabled = self.Lista_juegos.isSortingEnabled()
@@ -119,6 +122,7 @@ class Ui_MainWindow(object):
         item = self.Lista_juegos.item(4)
         item.setText(_translate("MainWindow", "Asteroids"))
         self.Lista_juegos.setSortingEnabled(__sortingEnabled)
+
 
     def add_medal(self, name, x_translation):
         self.name = QtWidgets.QLabel(self.Premios)

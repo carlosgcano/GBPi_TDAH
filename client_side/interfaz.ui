@@ -98,7 +98,7 @@
      <widget class="QLabel" name="down_arrow">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>140</x>
         <y>300</y>
         <width>71</width>
         <height>21</height>
@@ -117,10 +117,10 @@
      <widget class="QLabel" name="Titulo">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>40</x>
         <y>10</y>
-        <width>301</width>
-        <height>19</height>
+        <width>261</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -129,8 +129,17 @@
       <property name="frameShadow">
        <enum>QFrame::Plain</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
-       <string>Pi 4 Attention</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>images/pi4logo-letters.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

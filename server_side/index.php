@@ -14,16 +14,15 @@
     <title>GBpi Server</title>    
     <link rel="stylesheet" href="css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     <link rel="stylesheet" href="css/layouts/side-menu.css">
-
+    <link rel="stylesheet" href="css/form_style.css">
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
 </head>
 <body>
 
 <div id="layout">
-    <!-- Menu toggle -->
     <?php
-    readfile("sidebar.php");
+        readfile("sidebar.php");
     ?>
 
     <script language='javascript'>
@@ -65,21 +64,19 @@
         }
     </script>
 
-
-
-
-
-
     <div id="main">
         <div class="header">
             <h1>Puntuación</h1>
             <h2>¿Cómo fue su comportamiento en clase?</h2>
         </div>
-
         <div class="content">
+            <div class="pure-u-1-1">
                 <div id="chart_subjects_index"></div>
-                <button onclick="post_slice_colors()">Enviar</button>
-            <span id="resultado">0</span>
+                    <div class="pure-u-2-3">
+                        <button class="form-style-7" type="submit" onclick="post_slice_colors()">Enviar</button>                        
+                        <span id="resultado"></span>
+                    </div>
+            </div>
         </div>
 
     </div>
