@@ -3,7 +3,7 @@ import urllib.request, json
 class Utils(object):
 
 	def get_all():
-		address = "http://localhost/api/"
+		address = "http://pi4attention.eu5.org/api/"
 		url=urllib.request.urlopen(address)
 		data = json.loads(url.read().decode())
 		return data
@@ -15,7 +15,7 @@ class Utils(object):
 		return data['items'][0]['n_act']
 
 	def get_points():
-		address = "http://localhost/api/points/"
+		address = "http://pi4attention.eu5.org/api/points/"
 		url=urllib.request.urlopen(address)
 		data = json.loads(url.read().decode())
 		return data['items'][0]['points_by_day']

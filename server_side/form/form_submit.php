@@ -18,7 +18,7 @@ function saveData($n_subj, $n_act, $n_medal, $n_trophy, $subject_status,$attitud
 {
     global $connection;
 
-    $query = "  UPDATE `gbpi`.`gbpi_web` 
+    $query = "  UPDATE `".$db_name."`.`gbpi_web` 
                 SET `n_subj`='$n_subj',
                     `n_act`='$n_act',
                     `n_medal`='$n_medal',
@@ -64,7 +64,7 @@ function saveSubjectStatus($json)
     $data=json_decode($json, true);
     //Incluimos el array con los colores actualizados a la tabla gbpi_web
     $subject_status = implode(",", $data[0]);
-    $query = "UPDATE `gbpi`.`gbpi_web` 
+    $query = "UPDATE `".$db_name."`.`gbpi_web` 
               SET `subject_status` = '$subject_status' 
               WHERE `gbpi_web`.`student_name` = 'student1'";
     $callToDb = $connection->prepare($query);
@@ -74,12 +74,17 @@ function saveSubjectStatus($json)
     $green=$data[1][0];
     $yellow=$data[1][1];
     $points = $green*2+$yellow;
-    $query = "UPDATE `gbpi`.`points` 
+    $query = "UPDATE `".$db_name."`.`points` 
               SET `points_by_day` = '$points' 
               ORDER BY `id_points` DESC LIMIT 1";          
     $callToDb = $connection->prepare($query);
     $result = $callToDb->execute();
-    echo "Puntos añadidos al sistema satisfactoriamente";
+    if ($result){
+        echo "Puntos añadidos al sistema satisfactoriamente";    
+    }else{
+        echo "Hubo un error";    
+    }
+    
     
 }
 

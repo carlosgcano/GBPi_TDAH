@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>GBpi Server</title>    
+    <title>Pi4Attention</title>    
+    <link rel="icon" href="images/pi4logo-icon.png">
     <link rel="stylesheet" href="css/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     <link rel="stylesheet" href="css/form_style.css">
     <link rel="stylesheet" href="css/layouts/side-menu.css">
@@ -40,9 +41,9 @@
                         <span>Puntos por medalla</span>
                     </li>
                     <li>
-                        <label for="n_trophy">Medallas</label>
+                        <label for="n_trophy">Copas</label>
                         <input type="number" name="n_trophy" min="1" max="10" required>
-                        <span>Medallas por trofeo</span>
+                        <span>Copas por medalla</span>
                     </li>
                     <li>
                         <label for="game_time">Tiempo</label>
