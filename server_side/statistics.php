@@ -12,7 +12,6 @@
 <body>
 
 <div id="layout">
-    <!-- Menu toggle -->
     <?php
     readfile("sidebar.php");
     ?>

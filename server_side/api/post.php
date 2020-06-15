@@ -57,9 +57,12 @@ class Points extends DB{
     }
 
     function getAllPoints(){
-        $query = $this->connect()->query('SELECT points_by_day, point_date
-                                           FROM points 
-                                           ORDER BY point_date;');
+        $query = $this->connect()->query('SELECT points_by_day, point_date 
+                                          FROM `points` 
+                                          WHERE point_date BETWEEN (CURRENT_DATE() - INTERVAL 2 MONTH) AND CURRENT_DATE() 
+                                          ORDER BY point_date'
+                                          );
+
         return $query;
     }
 
